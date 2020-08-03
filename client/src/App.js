@@ -1,5 +1,9 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Saved from "./pages/Saved";
+import Search from "./pages/Search";
+import NoMatch from "./pages/NoMatch";
+
 import "./App.css";
 
 function App() {
@@ -8,9 +12,9 @@ function App() {
       <div>
         <Nav />
         <Switch>
-          <Route exact path="/" component={Books} />
-          <Route exact path="/books" component={Books} />
-          <Route exact path="/books/:id" component={Detail} />
+          <Route exact path="/" component={Search} />
+          <Route exact path="/Saved" component={Saved} />
+          <Route exact path="/Search" component={Search} />
           <Route component={NoMatch} />
         </Switch>
       </div>
