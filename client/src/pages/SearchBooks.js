@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import Nav from "../components/Nav";
 import Jumbotron from "../components/Jumbotron";
-import SavedBooks from "../components/SavedBooks";
+import Search from "../components/Search";
+import Results from "../components/Results";
 import Footer from "../components/Footer";
 // import API from "../utils/API";
 // import { Link } from "react-router-dom";
 
-class SavedPage extends Component {
+class SearchBooks extends Component {
   state = {
 
   };
@@ -17,7 +18,8 @@ class SavedPage extends Component {
       <div>
         <Nav />
         <Jumbotron />
-        <SavedBooks />
+        <Search />
+        <Results />
         <Footer />
       </div>
 
@@ -25,4 +27,4 @@ class SavedPage extends Component {
   }
 }
 
-export default SavedPage;
+export default SearchBooks;

@@ -3,19 +3,14 @@ import React from "react";
 function Nav() {
   return (
 
-    <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-      <ul className="navbar-nav">
-        <li className="nav-item active">
-          <a className="nav-link" href="#">Active</a>
+    <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+      <a class="navbar-brand" href="/">Logo</a>
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="/SearchBooks">Search</a>
         </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link" href="#">Link</a>
-        </li>
-        <li className="nav-item">
-          <a className="nav-link disabled" href="#">Disabled</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/SavedBooks">Saved</a>
         </li>
       </ul>
     </nav>
