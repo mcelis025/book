@@ -1,11 +1,11 @@
 import React from "react";
 
-function Title() {
+function Jumbotron() {
   return (
 
     <div className="container">
       <div className="jumbotron">
-        <h1>Google Books Search App</h1>      
+        <h1>(React) Google Books Search</h1>      
         <p>Search for books and save your favorite.</p>
       </div>   
     </div>
@@ -13,4 +13,4 @@ function Title() {
   );
 }
 
-export default Title;
+export default Jumbotron;
