@@ -2,7 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Nav from "./components/Nav";
 import Saved from "./pages/SavedBooks";
-import Search from "./pages/SearchBooks";
+import Search from "./pages/Books";
 import NoMatch from "./pages/NoMatch";
 
 function App() {

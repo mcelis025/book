@@ -2,6 +2,15 @@ const db = require("../models");
 
 // Defining methods for the booksController
 module.exports = {
+  searchBook: function (req, res) {
+    axios
+      .get('https://www.googleapis.com/books/v1/volumes?q=' + req.query.q)
+      .then(({ data: { items } }) => {
+        console.log(items);
+        res.json(items);
+      })
+      .catch((err) => res.status(422).json(err));
+  },
   findAll: function(req, res) {
     db.Book
       .find(req.query)

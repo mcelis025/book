@@ -22,9 +22,8 @@ function Results() {
         <h4>Written By </h4>
         <div className="container mt-4">
           <div className="media mt-3 mb-3">
-            <img src="img_avatar1.png" className="align-self-center mr-3" style={style} alt=""></img>
+            <img src="../../images/placeholder.jpg" className="align-self-center mr-3" style={style} alt=""></img>
             <div className="media-body">
-              <h4>Media Middle</h4>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
             </div>
           </div>
