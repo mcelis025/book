@@ -4,7 +4,6 @@ import Jumbotron from "../components/Jumbotron";
 import ShowSaved from "../components/ShowSaved";
 import Footer from "../components/Footer";
 import API from "../utils/API";
-// import API from "../utils/API";
 // import { Link } from "react-router-dom";
 
 class SavedBooks extends Component {
@@ -21,6 +20,12 @@ class SavedBooks extends Component {
       .catch((err) => console.log(err));
   }
 
+  deleteBook = id => {
+    API.deleteBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
+  
   render() {
     return (
 

@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getBooks: function() {
-    return axios.get("'/api/books/search', { params: { q: query } }");
+  getBooks: function(searchBook) {
+    return axios.get("/api/books/search", { params: { searchBook: "title" + searchBook } });
   },
   // Gets the book with the given id
   getBook: function(id) {

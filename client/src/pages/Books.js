@@ -10,58 +10,83 @@ import API from "../utils/API";
 
 class Books extends Component {
   state = {
-    books: []
+    books: [],
+    searchBook: ""
   };
 
-  componentDidMount() {
-    this.loadBooks();
-  }
+  // getBooks = () => {
+  //   API.getBooks(this.state.q)
+  //     .then(res =>
+  //       this.setState({
+  //         books: res.data
+  //       })
+  //     )
+  //     .catch(() =>
+  //       this.setState({
+  //         books: [],
+  //         message: "No New Books Found, Try a Different Query"
+  //       })
+  //     );
+  // };
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "" })
-      )
-      .catch(err => console.log(err));
-  };
-
-  deleteBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
-  handleInputChange = event => {
+  handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
-      [name]: value
+      [name]: value,
     });
   };
 
-  handleFormSubmit = event => {
+  handleFormSubmit = (event) => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
+    API.getBooks(this.state.searchBook)
+      .then(res => this.setState({ books: res.data }))
+      .catch((err) => console.log("Error looking for book: " + err));
   };
+
+  handleSave = id => {
+    const book = this.state.books.find(book => book.id === id);
+    API.saveBook({
+      id: book.id,
+      title: book.volumeInfo.title,
+      authors: book.volumeInfo.authors,
+      description: book.volumeInfo.description,
+      image: book.volumeInfo.image,
+      link: book.volumeInfo.link
+    }).then(() => this.getBooks());
+  }
 
   render() {
     return (
-
       <div>
         <Nav />
         <Jumbotron />
-        <Search />
-        <Results />
+        <Search 
+          searchBook={this.state.searchBook}
+          handleInputChange={this.handleInputChange}
+          handleFormSubmit={this.handleFormSubmit}
+        />
+        <Results
+          books={this.state.books}
+          // id={this.state.id}
+          // title={this.state.title}
+          // authors={this.state.authors}
+          // description={this.state.description}
+          // image={this.state.image}
+          // link={this.state.link}
+        />
         <Footer />
       </div>
-
+      // {this.state.recipes.map((recipe) => {
+      //   return (
+      //     <RecipeListItem
+      //       key={recipe.id}
+      //       title={recipe.title}
+      //       // href={recipe.volumeInfo.infoLink}
+      //       ingredients={recipe.synopsis}
+      //       // thumbnail={recipe.volumeInfo.imageLinks.smallThumbnail}
+      //     />
+      //   );
+      // })}
     );
   }
 }
