@@ -14,21 +14,6 @@ class Books extends Component {
     searchBook: ""
   };
 
-  // getBooks = () => {
-  //   API.getBooks(this.state.q)
-  //     .then(res =>
-  //       this.setState({
-  //         books: res.data
-  //       })
-  //     )
-  //     .catch(() =>
-  //       this.setState({
-  //         books: [],
-  //         message: "No New Books Found, Try a Different Query"
-  //       })
-  //     );
-  // };
-
   handleInputChange = (event) => {
     const { name, value } = event.target;
     this.setState({
@@ -50,8 +35,8 @@ class Books extends Component {
       title: book.volumeInfo.title,
       authors: book.volumeInfo.authors,
       description: book.volumeInfo.description,
-      image: book.volumeInfo.image,
-      link: book.volumeInfo.link
+      image: book.volumeInfo.imageLinks.thumbnail,
+      link: book.volumeInfo.infoLink
     }).then(() => this.getBooks());
   }
 
@@ -65,28 +50,19 @@ class Books extends Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
+        {this.state.books.map(book => (
         <Results
-          books={this.state.books}
-          // id={this.state.id}
-          // title={this.state.title}
-          // authors={this.state.authors}
-          // description={this.state.description}
-          // image={this.state.image}
-          // link={this.state.link}
+            id={book.id}
+            title={book.volumeInfo.title}
+            authors={book.volumeInfo.authors}
+            description={ book.volumeInfo.description}
+            image={book.volumeInfo.imageLinks.thumbnail}
+            link={book.volumeInfo.infoLink}
+            // book={this.state.book}
         />
+        ))}
         <Footer />
       </div>
-      // {this.state.recipes.map((recipe) => {
-      //   return (
-      //     <RecipeListItem
-      //       key={recipe.id}
-      //       title={recipe.title}
-      //       // href={recipe.volumeInfo.infoLink}
-      //       ingredients={recipe.synopsis}
-      //       // thumbnail={recipe.volumeInfo.imageLinks.smallThumbnail}
-      //     />
-      //   );
-      // })}
     );
   }
 }
