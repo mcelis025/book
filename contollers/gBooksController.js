@@ -1,9 +1,12 @@
+const axios = require("axios");
+const db = require("../models");
+
 module.exports = {
   findAll: function (req, res) {
     const { query: params } = req;
     axios
-      .get("https://www.googleapis.com/books/v1/volumes?q=", {
-        params,
+      .get("https://www.googleapis.com/books/v1/volumes", {
+        params
       })
       .then((results) =>
         results.data.items.filter(

@@ -4,25 +4,23 @@ import Jumbotron from "../components/Jumbotron";
 import ShowSaved from "../components/ShowSaved";
 import Footer from "../components/Footer";
 import API from "../utils/API";
-// import { Link } from "react-router-dom";
 
 class SavedBooks extends Component {
   state = {
-    books: [],
-    bookSearch: ""
+    books: []
   };
 
   componentDidMount() {
     API.getSavedBooks()
-      .then.apply((res) => {
+      .then((res) => {
         this.setState({ books: res.data });
       })
       .catch((err) => console.log(err));
   }
 
-  deleteBook = id => {
+  handleDeleteBook = id => {
     API.deleteBook(id)
-      .then(res => this.loadBooks())
+      .then(res => this.getSavedBooks())
       .catch(err => console.log(err));
   };
   
@@ -32,10 +30,19 @@ class SavedBooks extends Component {
       <div>
         <Nav />
         <Jumbotron />
-        <ShowSaved />
+        {this.state.books.map((book) => 
+        <ShowSaved 
+          key={book.id}
+          title={book.title}
+          authors={book.authors.join(", ")}
+          description={book.description}
+          image={book.image}
+          link={book.link}
+          handleDeleteBook={this.handleBookDelete(book.id)}
+        />
+        )}
         <Footer />
       </div>
-
     );
   }
 }

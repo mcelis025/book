@@ -2,8 +2,8 @@ import axios from "axios";
 
 export default {
   // Gets all books
-  getBooks: function(searchBook) {
-    return axios.get("/api/books/search", { params: { searchBook: "title" + searchBook } });
+  getBooks: function(q) {
+    return axios.get("/api/gbooks/", { params: { q: "title:" + q } });
   },
   // Gets the book with the given id
   getBook: function(id) {
@@ -17,7 +17,7 @@ export default {
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
   },
-  getSavedBooks: function(id) {
-    return axios.get("/api/books/" + id);
+  getSavedBooks: function() {
+    return axios.get("/api/books/");
   },
 };
