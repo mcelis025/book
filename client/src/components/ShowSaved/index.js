@@ -15,7 +15,7 @@ function ShowSaved(props) {
   	    <div className="row">
           <h4 className="col-lg-6">{props.title}</h4>
           <div className="container col-lg-6">
-            <button type="button" onClick={props.handleDeleteBook} className="btn btn-danger float-right ml-1">Delete</button>
+            <button type="button" onClick={()=>props.handleDeleteBook(props.id)} className="btn btn-danger float-right ml-1">Delete</button>
             <button type="button" target="_blank" href={props.link} className="btn btn-primary float-right">View</button>
           </div>
         </div>

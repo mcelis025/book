@@ -21,21 +21,25 @@ class Books extends Component {
 
   handleFormSubmit = (event) => {
     event.preventDefault();
-    API.getBooks(this.state.q)
-      .then(res => this.setState({ books: res.data }))
-      .catch((err) => console.log("Error looking for book: " + err));
+    this.loadbooks()
   };
 
-  handleSave = id => {
-    const book = this.state.books.find(book => book.id === id);
+  loadbooks = () => {
+    API.getBooks(this.state.q)
+    .then(res => this.setState({ books: res.data }))
+    .catch((err) => console.log("Error looking for book: " + err));
+  }
+
+  handleSave = (book)=> {
+    console.log(book)
     API.saveBook({
-      id: book.id,
+      googleId: book.id,
       title: book.volumeInfo.title,
       authors: book.volumeInfo.authors,
       description: book.volumeInfo.description,
       image: book.volumeInfo.imageLinks.thumbnail,
       link: book.volumeInfo.infoLink
-    }).then(() => this.getBooks());
+    }).then((reults) => this.loadbooks()) ;
   }
 
   render() {
@@ -48,17 +52,19 @@ class Books extends Component {
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
         />
-        {this.state.books.map((book) =>
+        {console.log(this.state.books)}
+        {this.state.books.length > 0 ?  this.state.books.map((book) =>
         <Results
-          id={book.id}
+           
           title={book.volumeInfo.title}
           authors={book.volumeInfo.authors}
           description={book.volumeInfo.description}
           image={book.volumeInfo.imageLinks.thumbnail}
           link={book.volumeInfo.infoLink}
+          book={book}
           handleSave={this.handleSave}
         />
-        )}
+        ) : "" }
         <Footer />
       </div>
     );

@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const gBooksController = require("../../controllers/gBooksController");
+const gBooksController = require("../../contollers/gBooksController");
 
 // Matches with "/api/gbooks"
 router

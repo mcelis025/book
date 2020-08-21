@@ -11,16 +11,21 @@ class SavedBooks extends Component {
   };
 
   componentDidMount() {
-    API.getSavedBooks()
-      .then((res) => {
-        this.setState({ books: res.data });
-      })
-      .catch((err) => console.log(err));
+    this.loadbooks()
+  }
+
+  loadbooks = () => {
+    API.getAllBooks()
+    .then((res) => {
+      this.setState({ books: res.data });
+    })
+    .catch((err) => console.log(err));
   }
 
   handleDeleteBook = id => {
+    console.log(id)
     API.deleteBook(id)
-      .then(res => this.getSavedBooks())
+      .then(res => this.loadbooks())
       .catch(err => console.log(err));
   };
   
@@ -32,13 +37,14 @@ class SavedBooks extends Component {
         <Jumbotron />
         {this.state.books.map((book) => 
         <ShowSaved 
-          key={book.id}
+          key={book._id}
           title={book.title}
           authors={book.authors.join(", ")}
           description={book.description}
           image={book.image}
           link={book.link}
-          handleDeleteBook={this.handleBookDelete(book.id)}
+          id={book._id}
+          handleDeleteBook={this.handleDeleteBook}
         />
         )}
         <Footer />

@@ -15,13 +15,18 @@ function Results(props) {
           <div className="container col-lg-6">
             <button
               type="button"
-              onClick={props.handleSave}
+              onClick={() => props.handleSave(props.book)}
               className="btn btn-success float-right ml-1"
             >
               Save
             </button>
-            <button type="button" target="_blank" className="btn btn-primary float-right">
-              <a href={props.link}>View</a>
+            <button
+              type="button"
+              target="_blank"
+              className="btn btn-primary float-right"
+              href={props.link}
+            >
+              View
             </button>
           </div>
         </div>
