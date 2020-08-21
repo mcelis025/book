@@ -20,14 +20,7 @@ function Results(props) {
             >
               Save
             </button>
-            <button
-              type="button"
-              target="_blank"
-              className="btn btn-primary float-right"
-              href={props.link}
-            >
-              View
-            </button>
+            <a type="button" target="_blank" rel="noopener noreferrer" href={props.link} className="btn btn-primary float-right">View</a>
           </div>
         </div>
         <h4>Written By {props.authors}</h4>
