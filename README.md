@@ -1,3 +1,30 @@
+# Project Title 
+Book (Google Books Search React App)
+
+# Overview
+Search for your favorite books! Simply type a keyword and hit search. Once you find a book you like click save and your book will be saved for the future.
+
+# Preview
+![Book](client/public/img/images/search.png "Book")
+
+# Link to Deployed Site
+  * [Book](https://frozen-sea-29077.herokuapp.com/)
+  
+# Resources Used
+  * HTML
+  * CSS
+  * JQuery
+  * Bootstrap
+  * Node
+  * Express
+  * Express-handlebars
+  * Mongoose
+  * Cheerio
+  * Axios
+  
+# Versioning 
+  * GitHub
+
 # Create React Express App
 
 ## About This Boilerplate
@@ -23,7 +50,3 @@ npm start
 ```
 
 Your app should now be running on <http://localhost:3000>. The Express server should intercept any AJAX requests from the client.
-
-## Deployment (Heroku)
-
-To deploy, simply add and commit your changes, and push to Heroku. As is, the NPM scripts should take care of the rest.
