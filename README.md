@@ -5,7 +5,10 @@ Book (Google Books Search React App)
 Search for your favorite books! Simply type a keyword and hit search. Once you find a book you like click save and your book will be saved for the future.
 
 # Preview
-![Book](./client/public/img/search.png "Book")
+## Search Page
+![Book](client/public/img/search.png "Book")
+## Saved Page
+![Book](client/public/img/saved.png "Book")
 
 # Link to Deployed Site
   * [Book](https://frozen-sea-29077.herokuapp.com/)
