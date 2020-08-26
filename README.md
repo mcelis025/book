@@ -15,12 +15,11 @@ Search for your favorite books! Simply type a keyword and hit search. Once you f
   * CSS
   * JQuery
   * Bootstrap
-  * Node
-  * Express
-  * Express-handlebars
   * Mongoose
-  * Cheerio
-  * Axios
+  * Express
+  * React
+  * Node
+
   
 # Versioning 
   * GitHub
